@@ -134,7 +134,7 @@ func (sm *Manager) startTableMode(id string) error {
 			err = sm.svcProcessor.ServicesWatcher(ctx, sm.svcProcessor.SyncServices)
 			if err != nil {
 				log.Error("Cannot watch services", "err", err)
-			}else{
+			} else {
 				log.Debug("watching services")
 			}
 		}
@@ -145,7 +145,7 @@ func (sm *Manager) startTableMode(id string) error {
 		if err != nil {
 			log.Debug("init of ControlPlane NOT successful")
 			return fmt.Errorf("cluster initialization error: %w", err)
-		}else{
+		} else {
 			log.Debug("init of ControlPlane successful")
 		}
 		log.Debug("init ClusterManager")
@@ -153,7 +153,7 @@ func (sm *Manager) startTableMode(id string) error {
 		if err != nil {
 			log.Debug("init cluster manager NOT successful")
 			return fmt.Errorf("cluster manager initialization error: %w", err)
-		}else{
+		} else {
 			log.Debug("init ClusterManager successful")
 		}
 
@@ -161,7 +161,7 @@ func (sm *Manager) startTableMode(id string) error {
 			log.Error("Control Plane", "err", err)
 			// Trigger the shutdown of this manager instance
 			sm.signalChan <- syscall.SIGINT
-		}else{
+		} else {
 			log.Debug("start VipServer for cluster manager successful")
 		}
 	}
